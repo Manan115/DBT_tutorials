@@ -1,0 +1,10 @@
+version: 2
+
+models:
+  - name: bronze_store
+    config:
+      materialized: view
+
+  - name: bronze_return
+    config:
+      materialized: view
