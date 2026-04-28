@@ -4,7 +4,35 @@ models:
   - name: bronze_store
     config:
       materialized: view
+      schema: bronze
+    columns:
+      - name: store_sk
+        data_tests:
+          - not_null
+          - unique
+      - name: store_name
+        data_tests:
+          - accepted_values:
+              arguments:
+                values:
+                  - "Megamart Manhattan"
+                  - "Megamart Brooklyn"
+                  - "Megamart Austin"
+                  - "Megamart San Jose"
+                  - "Megamart Toronto"
+              config:
+                severity: warn
 
   - name: bronze_return
     config:
       materialized: view
+
+  - name: bronze_sales
+    columns:
+      - name: sales_id
+        data_tests:
+          - unique
+          - not_null
+      - name: gross_amount
+        data_tests:
+          - generic_non_negative
