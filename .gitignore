@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Local dbt credentials
+dbt_mann/profiles.yml
